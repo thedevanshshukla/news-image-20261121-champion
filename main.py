@@ -11,6 +11,12 @@ import os
 import shutil
 import sys
 from pathlib import Path
+
+# Fix python3 -P sys.path isolation
+_bot_dir = str(Path(__file__).resolve().parent)
+if _bot_dir not in sys.path:
+    sys.path.insert(0, _bot_dir)
+
 from broadsheet_validator import validate_image_file
 
 def deploy_broadsheet() -> None:
